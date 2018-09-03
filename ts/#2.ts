@@ -3,3 +3,29 @@
 // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 
 // By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+
+function evenFibSum(limit:number)
+	{
+		if (limit < 2)
+			return 0;
+	
+		let ef1 = 0, ef2 = 2;
+		let sum = ef1 + ef2;
+	
+		while (ef2 <= limit)
+		{
+
+			let ef3 = 4 * ef2 + ef1;
+
+			if (ef3 > limit)
+				return;
+
+			ef1 = ef2;
+			ef2 = ef3;
+			sum += ef2;
+		}
+	
+		console.log(sum);
+    }
+    
+    console.log(evenFibSum(4000000));
