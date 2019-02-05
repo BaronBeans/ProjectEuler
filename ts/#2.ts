@@ -4,26 +4,37 @@
 
 // By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
-const evenFibSum = (limit: number) => {
-	if (limit < 2)
-		return 0;
-
-	let ef1 = 0, ef2 = 2;
-	let sum = ef1 + ef2;
-
-	while (ef2 <= limit) {
-
-		let ef3 = 4 * ef2 + ef1;
-
-		if (ef3 > limit)
-			return;
-
-		ef1 = ef2;
-		ef2 = ef3;
-		sum += ef2;
+const getFibonacciNumbers = (n: number): number => {
+	if (n <= 1) {
+		return n;
+	} else {
+		return getFibonacciNumbers(n - 1) + getFibonacciNumbers(n - 2);
 	}
-
-	console.log(sum);
 }
 
-console.log(evenFibSum(4000000));
+const getEvenFibNumbers = (limit: number) => {
+	let result = [];
+	for (let i = 2; getFibonacciNumbers(i) <= limit; i++) {
+		const current = getFibonacciNumbers(i);
+		if (current % 2 == 0) {
+			result.push(current);
+		}
+	}
+	return result;
+}
+
+const sumEvenFibNumbers = (n: number) => {
+	const data = getEvenFibNumbers(n);
+
+	let result = 0;
+
+	data.forEach(i => {
+		result += i;
+	});
+
+	return result;
+}
+
+console.log(sumEvenFibNumbers(4000000));
+
+// returns: 4613732
