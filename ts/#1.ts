@@ -2,15 +2,16 @@
 
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
-function FindNumbers() {
-    var total: number = 0;
+const findNumbers = () => {
+    let total: number = 0;
     for (let i = 1; i < 1000; i++) {
         if (i % 3 == 0) {
-            total += i
+            total += i;
         } else if (i % 5 == 0) {
-            total += i
+            total += i;
         }
     }
-    console.log("Total = " + total);
+    console.log(`Total = ${total}`);
 }
-FindNumbers();
+
+findNumbers();
