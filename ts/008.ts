@@ -2,7 +2,7 @@
 
 // Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 
-const data = `73167176531330624919225119674426574742355349194934
+const numbers = `73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
 85861560789112949495459501737958331952853208805511
 12540698747158523863050715693290963295227443043557
@@ -23,34 +23,21 @@ const data = `73167176531330624919225119674426574742355349194934
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450`
 
-const array = data.split("");
-const range = 13;
+const data = numbers.split("");
+const range = 4;
 
-const checkXDigits = (start: number) => {
-    let result = parseInt(array[start]);
-    for (let i = 1; i <= range; i++) {
-        result *= parseInt(array[start + i]);
+const getProductOfRange = (start: number) => {
+    let arr = [];
+    for (let i = start; i < start + range; i++) {
+        arr.push(parseInt(data[i]));
     }
+    let result = 1;
+    arr.forEach(n => {
+        result *= n;
+    });
     return result;
 }
 
-const findHighestProductGroup = () => {
-    let products = [];
-    for (let i = 0; i < data.length - range; i++) {
-        products.push(checkXDigits(i))
-    }
-    return products;
+for (let i = 0; i < data.length - range; i++) {
+    console.log(getProductOfRange(i));
 }
-
-const getAnswer = () => {
-    const dataFound = findHighestProductGroup().indexOf(5832);
-    let result = 1
-
-    for (let i = 1; i <= range; i++) {
-        console.log(array[dataFound + i]);
-        result *= parseInt(array[dataFound + i]);
-    }
-    console.log(`Result was: ${result}`);
-}
-
-getAnswer();
