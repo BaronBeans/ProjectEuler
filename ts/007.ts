@@ -2,7 +2,7 @@
 
 // What is the 10 001st prime number?
 
-const isPrime = (n: number) => {
+var isPrime = (n: number) => {
     for (let i = 2; i < n; i++) {
         if (n % i == 0) {
             return false;
@@ -11,7 +11,7 @@ const isPrime = (n: number) => {
     return true;
 }
 
-const getPrimes = (n: number) => {
+const getNPrimes = (n: number) => {
     let arr = [2];
     let i = 3;
     while (arr.length < n) {
@@ -23,7 +23,7 @@ const getPrimes = (n: number) => {
     return arr;
 }
 
-const listOfPrimes = getPrimes(10001);
+const listOfPrimes = getNPrimes(10001);
 
 console.log(listOfPrimes[10000]);
 
