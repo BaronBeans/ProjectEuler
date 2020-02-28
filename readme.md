@@ -1,4 +1,5 @@
 # To run the code:
 
-* Compile Typescript code, but running TSC or TSC --watch
-* In CLI navigate to the folder which contains the JS and run ```node xxx.js```
+* Run `npm start` to start the webpack build and in the command line type the number of the problem you wish to see the answer to.
+* Use ctrl+c to exit
+
